@@ -1,5 +1,8 @@
 bintray-maven-plugin
 ====================
+
+[ ![Download](https://api.bintray.com/packages/devexperts/Maven/bintray-maven-plugin/images/download.svg) ](https://bintray.com/devexperts/Maven/bintray-maven-plugin/_latestVersion)
+
 The plugin is primary used during *deploy* phase, to add your artifact(s) to a Bintray repository,
 additionally to deploying in repositories from *distributionManagement* section.
 This plugin works like **maven-deploy-plugin**.

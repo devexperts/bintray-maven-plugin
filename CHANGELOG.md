@@ -1,14 +1,14 @@
 Changelog
 =========
 
-1.0 - 2015-10-08
+1.0 - 2015-10-11
 ----------------
 
 ### Improvements: ###
 
 * Add bintray-maven-plugin for deploying to Bintray
 
-0.9 - 2015-10-07
+0.9 - 2015-10-11
 ----------------
 
 Initial public version

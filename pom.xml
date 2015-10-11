@@ -5,7 +5,7 @@
     <groupId>com.devexperts.bintray</groupId>
     <artifactId>bintray-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>0.9-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <name>bintray-maven-plugin</name>
     <description>Maven plugin for deploying to Bintray repository</description>
 
@@ -78,18 +78,27 @@
 
     <profiles>
         <profile>
-            <id>bintray</id>
-            <distributionManagement>
-                <repository>
-                    <id>bintray-devexperts</id>
-                    <url>https://api.bintray.com/maven/devexperts/Maven/bintray-maven-plugin</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-        <profile>
             <id>release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>com.devexperts.bintray</groupId>
+                        <artifactId>bintray-maven-plugin</artifactId>
+                        <version>0.9</version>
+                        <configuration>
+                            <id>bintray-devexperts</id>
+                            <url>https://api.bintray.com/maven/devexperts/Maven/bintray-maven-plugin</url>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>bintray-deploy</id>
+                                <goals>
+                                    <goal>deploy</goal>
+                                    <goal>publish</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>license-maven-plugin</artifactId>
