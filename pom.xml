@@ -47,9 +47,16 @@
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.4</version>
                 <configuration>
-                    <!-- see http://jira.codehaus.org/browse/MNG-5346 -->
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>mojo-descriptor</id>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -84,7 +91,7 @@
                     <plugin>
                         <groupId>com.devexperts.bintray</groupId>
                         <artifactId>bintray-maven-plugin</artifactId>
-                        <version>0.9</version>
+                        <version>1.0.1</version>
                         <configuration>
                             <id>bintray-devexperts</id>
                             <url>https://api.bintray.com/maven/devexperts/Maven/bintray-maven-plugin</url>
