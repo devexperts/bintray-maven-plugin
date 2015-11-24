@@ -5,7 +5,7 @@
     <groupId>com.devexperts.bintray</groupId>
     <artifactId>bintray-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0.1</version>
+    <version>1.1-SNAPSHOT</version>
     <name>bintray-maven-plugin</name>
     <description>Maven plugin for deploying to Bintray repository</description>
 
@@ -91,7 +91,7 @@
                     <plugin>
                         <groupId>com.devexperts.bintray</groupId>
                         <artifactId>bintray-maven-plugin</artifactId>
-                        <version>1.0.1</version>
+                        <version>1.1-SNAPSHOT</version>
                         <configuration>
                             <id>bintray-devexperts</id>
                             <url>https://api.bintray.com/maven/devexperts/Maven/bintray-maven-plugin</url>
@@ -199,7 +199,7 @@
     <scm>
         <connection>scm:git:https://github.com/Devexperts/bintray-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:Devexperts/bintray-maven-plugin.git</developerConnection>
-        <tag>bintray-maven-plugin-1.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
