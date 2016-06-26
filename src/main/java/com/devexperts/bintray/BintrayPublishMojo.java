@@ -103,7 +103,6 @@ public class BintrayPublishMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        MavenSession session;
         if (skip)
             return;
         // Create url within Bintray REST API.

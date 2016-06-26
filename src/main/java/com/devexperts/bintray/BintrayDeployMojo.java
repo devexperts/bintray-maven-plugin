@@ -37,6 +37,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +93,13 @@ public class BintrayDeployMojo extends AbstractDeployMojo {
     @Component(role = ArtifactRepositoryLayout.class)
     private Map<String, ArtifactRepositoryLayout> repositoryLayouts;
 
+    @Parameter(property = "project.build.finalName", required = false, readonly = true)
+    private String finalName;
+
+    @Parameter(property = "project.build.directory", required = false, readonly = true)
+    private String buildDirectory;
+
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         if (skip)
@@ -110,7 +118,14 @@ public class BintrayDeployMojo extends AbstractDeployMojo {
         // Deploy artifacts.
         for (Artifact a : artifacts) {
             try {
-                deploy(a.getFile(), a, r, getLocalRepository(), retryFailedDeploymentCount);
+                File deployFile = a.getFile();
+                if (deployFile == null || !deployFile.exists())
+                    deployFile = new File(buildDirectory + File.separator + finalName + "." + a.getType());
+                if (deployFile.exists()) {
+                    deploy(deployFile, a, r, getLocalRepository(), retryFailedDeploymentCount);
+                } else {
+                    getLog().warn("Cannot deploy artifact " + a + ", no file to deploy");
+                }
             } catch (ArtifactDeploymentException e) {
                 throw new MojoFailureException("Error occurred deploying the artifact", e);
             }
