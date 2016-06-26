@@ -84,6 +84,8 @@ public class BintrayPublishMojo extends AbstractMojo {
     @Parameter(property = "bintray.publish.skip", defaultValue = "false", readonly = true)
     private boolean skip;
 
+    @Parameter(property = "maven.deploy.skip", defaultValue = "false", readonly = true)
+    private boolean deploySkip;
 
     /**
      * Maven project to be processed.
@@ -103,7 +105,7 @@ public class BintrayPublishMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        if (skip)
+        if (skip || deploySkip)
             return;
         // Create url within Bintray REST API.
         // Replace HOST/maven/.. with HOST/content/.. and add publish command for specified version.
