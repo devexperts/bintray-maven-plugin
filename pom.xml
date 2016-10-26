@@ -91,7 +91,7 @@
                     <plugin>
                         <groupId>com.devexperts.bintray</groupId>
                         <artifactId>bintray-maven-plugin</artifactId>
-                        <version>1.0.1</version>
+                        <version>1.1</version>
                         <configuration>
                             <id>bintray-devexperts</id>
                             <url>https://api.bintray.com/maven/devexperts/Maven/bintray-maven-plugin</url>
@@ -197,8 +197,8 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:https://github.com/Devexperts/bintray-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:Devexperts/bintray-maven-plugin.git</developerConnection>
+        <connection>scm:git:ssh://git@stash.in.devexperts.com:7999/dxlib/bintray-maven-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@stash.in.devexperts.com:7999/dxlib/bintray-maven-plugin.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 

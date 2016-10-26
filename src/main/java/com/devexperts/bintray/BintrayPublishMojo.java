@@ -61,22 +61,22 @@ public class BintrayPublishMojo extends AbstractMojo {
     /**
      * Bintray user for authentication.
      */
-    @Parameter(property = "bintray.user", readonly = true)
+    @Parameter(property = "bintray.user")
     private String user;
     /**
      * Bintray API key for authentication.
      */
-    @Parameter(property = "bintray.key", readonly = true)
+    @Parameter(property = "bintray.key")
     private String key;
     /**
      * The id can be used to pick up the correct credentials from the settings.xml.
      */
-    @Parameter(property = "bintray.repository.id", required = true, readonly = true)
+    @Parameter(property = "bintray.repository.id", required = true)
     private String id;
     /**
      * The location of maven repository in Bintray.
      */
-    @Parameter(property = "bintray.repository.url", required = true, readonly = true)
+    @Parameter(property = "bintray.repository.url", required = true)
     private String url;
     /**
      * Set this to {@code true} to bypass publishing.
