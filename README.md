@@ -48,7 +48,7 @@ Example
 <plugin>
     <groupId>com.devexperts.bintray</groupId>
     <artifactId>bintray-maven-plugin</artifactId>
-    <version>1.0.1</version>
+    <version>1.2</version>
     <configuration>
         <id>bintray-REPO-deploy</id>
         <url>https://api.bintray.com/maven/SUBJECT/maven/REPO</url>
