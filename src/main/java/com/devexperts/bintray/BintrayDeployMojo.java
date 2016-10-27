@@ -38,6 +38,9 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -118,12 +121,20 @@ public class BintrayDeployMojo extends AbstractDeployMojo {
         // Deploy artifacts.
         for (Artifact a : artifacts) {
             try {
-                File deployFile = a.getFile();
-                if (deployFile == null || !deployFile.exists())
-                    deployFile = new File(buildDirectory + File.separator + finalName + "." + a.getType());
-                if (deployFile.exists()) {
-                    deploy(deployFile, a, r, getLocalRepository(), retryFailedDeploymentCount);
+                Path deployFilePath = a.getFile() != null ? a.getFile().toPath() : null;
+                if (deployFilePath == null || !Files.exists(deployFilePath)) {
+                    if (deployFilePath != null)
+                        getLog().debug("Artifact " + a + " doesn't exist in " + deployFilePath);
+                    deployFilePath = Paths.get(buildDirectory, finalName + "." + a.getType());
+                }
+                if (!Files.exists(deployFilePath) && a.getType().equals("pom")) {
+                    getLog().debug("Artifact " + a + " doesn't exist in " + deployFilePath);
+                    deployFilePath = Paths.get(buildDirectory).getParent().resolve("pom.xml");
+                }
+                if (Files.exists(deployFilePath)) {
+                    deploy(deployFilePath.toFile(), a, r, getLocalRepository(), retryFailedDeploymentCount);
                 } else {
+                    getLog().debug("Artifact " + a + " doesn't exist in " + deployFilePath);
                     getLog().warn("Cannot deploy artifact " + a + ", no file to deploy");
                 }
             } catch (ArtifactDeploymentException e) {
