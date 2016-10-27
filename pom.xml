@@ -5,7 +5,7 @@
     <groupId>com.devexperts.bintray</groupId>
     <artifactId>bintray-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.3</version>
+    <version>1.4-SNAPSHOT</version>
     <name>bintray-maven-plugin</name>
     <description>Maven plugin for deploying to Bintray repository</description>
 
@@ -199,7 +199,7 @@
     <scm>
         <connection>scm:git:ssh://git@stash.in.devexperts.com:7999/dxlib/bintray-maven-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@stash.in.devexperts.com:7999/dxlib/bintray-maven-plugin.git</developerConnection>
-        <tag>bintray-maven-plugin-1.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
